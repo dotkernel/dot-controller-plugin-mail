@@ -23,6 +23,11 @@ use Zend\Stdlib\StringUtils;
  */
 class MailPluginAbstractFactory extends AbstractMailFactory
 {
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @return bool
+     */
     public function canCreate(ContainerInterface $container, $requestedName)
     {
         if(strpos($requestedName, 'sendMail') !== 0) {
@@ -37,6 +42,12 @@ class MailPluginAbstractFactory extends AbstractMailFactory
         return array_key_exists($specificServiceName, $this->getConfig($container));
     }
 
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return MailPlugin
+     */
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         $specificServiceName = $this->getSpecificServiceName($requestedName);
@@ -49,6 +60,10 @@ class MailPluginAbstractFactory extends AbstractMailFactory
         return new MailPlugin($mailService);
     }
 
+    /**
+     * @param $requestedName
+     * @return string
+     */
     protected function getSpecificServiceName($requestedName)
     {
         $parts = explode('_', $this->camelCaseToUnderscore($requestedName));
@@ -68,6 +83,10 @@ class MailPluginAbstractFactory extends AbstractMailFactory
         return strtolower($specificServiceName);
     }
 
+    /**
+     * @param $value
+     * @return mixed
+     */
     protected function camelCaseToUnderscore($value)
     {
         if (!is_scalar($value) && !is_array($value)) {

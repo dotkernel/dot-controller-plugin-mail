@@ -18,6 +18,9 @@ use Dot\Controller\Plugin\Mail\Factory\MailPluginAbstractFactory;
  */
 class ConfigProvider
 {
+    /**
+     * @return array
+     */
     public function __invoke()
     {
         return [
@@ -25,6 +28,9 @@ class ConfigProvider
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getDependencyConfig()
     {
         return [

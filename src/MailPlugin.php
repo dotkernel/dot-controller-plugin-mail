@@ -37,7 +37,10 @@ class MailPlugin implements PluginInterface
         6 => 'attachments'
     ];
 
-
+    /**
+     * MailPlugin constructor.
+     * @param MailServiceInterface $mailService
+     */
     public function __construct(MailServiceInterface $mailService)
     {
         $this->mailService = $mailService;
