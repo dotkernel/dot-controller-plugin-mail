@@ -1,0 +1,58 @@
+{
+  "name": "dotkernel/dot-controller-plugin-mail",
+  "type": "library",
+  "description": "Mail controller plugin for easy access of mail services inside DK controllers",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "n3vrax",
+      "email": "tibi@apidemia.com"
+    }
+  ],
+  "require": {
+    "php": "^5.6 || ^7.0",
+    "psr/http-message": "^1.0",
+    "container-interop/container-interop": "^1.1",
+    "zendframework/zend-stdlib": "^3.0",
+    "dotkernel/dot-mail": "0.6.x-dev",
+    "dotkernel/dot-controller": "0.6.x-dev"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "squizlabs/php_codesniffer": "^2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dot\\Controller\\Plugin\\Mail\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "DotTest\\Controller\\Plugin\\Mail\\": "test/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/dotkernel/dot-mail.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/dotkernel/dot-controller.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/dotkernel/dot-event.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/dotkernel/dot-helpers.git"
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.6-dev"
+    }
+  }
+}
