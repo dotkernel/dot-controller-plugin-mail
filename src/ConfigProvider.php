@@ -24,22 +24,13 @@ class ConfigProvider
     public function __invoke()
     {
         return [
-            'dependencies' => $this->getDependencyConfig(),
-        ];
-    }
-
-    /**
-     * @return array
-     */
-    public function getDependencyConfig()
-    {
-        return [
             'dot_controller' => [
 
                 'plugin_manager' => [
-                    MailPluginAbstractFactory::class,
-                ]
-
+                    'abstract_factories' => [
+                        MailPluginAbstractFactory::class,
+                    ],
+                ],
             ],
         ];
     }
