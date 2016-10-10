@@ -30,11 +30,11 @@ class MailPluginAbstractFactory extends AbstractMailFactory
      */
     public function canCreate(ContainerInterface $container, $requestedName)
     {
-        if(strpos($requestedName, 'sendMail') !== 0) {
+        if (strpos($requestedName, 'sendMail') !== 0) {
             return false;
         }
 
-        if($requestedName === 'sendMail') {
+        if ($requestedName === 'sendMail') {
             return true;
         }
 
@@ -68,7 +68,7 @@ class MailPluginAbstractFactory extends AbstractMailFactory
     {
         $parts = explode('_', $this->camelCaseToUnderscore($requestedName));
 
-        if(count($parts) === 2) {
+        if (count($parts) === 2) {
             return 'default';
         }
 
@@ -94,11 +94,10 @@ class MailPluginAbstractFactory extends AbstractMailFactory
         }
 
         if (StringUtils::hasPcreUnicodeSupport()) {
-            $pattern     = ['#(?<=(?:\p{Lu}))(\p{Lu}\p{Ll})#', '#(?<=(?:\p{Ll}|\p{Nd}))(\p{Lu})#'];
+            $pattern = ['#(?<=(?:\p{Lu}))(\p{Lu}\p{Ll})#', '#(?<=(?:\p{Ll}|\p{Nd}))(\p{Lu})#'];
             $replacement = ['_\1', '_\1'];
-        }
-        else {
-            $pattern     = ['#(?<=(?:[A-Z]))([A-Z]+)([A-Z][a-z])#', '#(?<=(?:[a-z0-9]))([A-Z])#'];
+        } else {
+            $pattern = ['#(?<=(?:[A-Z]))([A-Z]+)([A-Z][a-z])#', '#(?<=(?:[a-z0-9]))([A-Z])#'];
             $replacement = ['\1_\2', '_\1'];
         }
 
