@@ -3,7 +3,6 @@
   "type": "library",
   "description": "Mail controller plugin for easy access of mail services inside DK controllers",
   "license": "MIT",
-  "minimum-stability": "dev",
   "authors": [
     {
       "name": "n3vrax",
@@ -16,6 +15,8 @@
     "container-interop/container-interop": "^1.1",
     "zendframework/zend-stdlib": "^3.0",
 
+    "dotkernel/dot-event": "0.6.x-dev",
+    "dotkernel/dot-helpers": "0.6.x-dev",
     "dotkernel/dot-mail": "0.6.x-dev",
     "dotkernel/dot-controller": "0.6.x-dev"
   },
@@ -33,24 +34,6 @@
       "DotTest\\Controller\\Plugin\\Mail\\": "test/"
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/dotkernel/dot-mail.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/dotkernel/dot-controller.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/dotkernel/dot-event.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/dotkernel/dot-helpers.git"
-    }
-  ],
   "extra": {
     "branch-alias": {
       "dev-master": "0.6-dev"
