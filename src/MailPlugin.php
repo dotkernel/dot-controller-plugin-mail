@@ -9,7 +9,6 @@
 
 namespace Dot\Controller\Plugin\Mail;
 
-
 use Dot\Controller\Plugin\PluginInterface;
 use Dot\Mail\Result\ResultInterface;
 use Dot\Mail\Service\MailServiceInterface;
@@ -109,18 +108,23 @@ class MailPlugin implements PluginInterface
     {
         if (isset($args['body'])) {
             $body = $args['body'];
-            if (is_string($body)) {
+            if(is_array($body)) {
+                //consider this as a template name and its params
+                $this->mailService->setTemplate($body[0], $body[1]);
+            }
+            else {
                 $this->mailService->setBody($body);
-            } else {
-                $this->mailService->setTemplate($body);
             }
         }
+
         if (isset($args['subject'])) {
             $this->mailService->setSubject($args['subject']);
         }
+
         if (isset($args['to'])) {
             $this->mailService->getMessage()->setTo($args['to']);
         }
+
         if (isset($args['from'])) {
             $from = $args['from'];
             if (is_array($from)) {
@@ -131,12 +135,15 @@ class MailPlugin implements PluginInterface
                 $this->mailService->getMessage()->setFrom($from);
             }
         }
+
         if (isset($args['cc'])) {
             $this->mailService->getMessage()->setCc($args['cc']);
         }
+
         if (isset($args['bcc'])) {
             $this->mailService->getMessage()->setBcc($args['bcc']);
         }
+
         if (isset($args['attachments'])) {
             $this->mailService->setAttachments($args['attachments']);
         }
