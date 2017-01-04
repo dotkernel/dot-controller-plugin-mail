@@ -17,12 +17,13 @@ Next, make sure you merge the `ConfigProvider` to your application's configurati
 Because multiple mail services can be defined in the dot-mail module, there can also be requested as controller plugins by following the convention
 
 ```php
+//calling this plugins without parameters, will return the mail service instead, otherwise will use parameters to send directly the e-mail
 $this->sendMail(); //will return the default mail service
 
 $this->sendMailYourMailService(); //will return the mail service named your_mail_service
 ```
 
-Controller mail plugins are invokable. To send a mail you can use the following 2 methods
+Controller mail plugins are invokable. To send an email you can use the following 2 methods
  
  * `$this->sendMail(array $mailConfig)` - will send a mail through a mail service configured based on the $mailConfig param.
  The array parameter valid keys are body, subject, to, from, cc, bcc, attachments. The body parameter can be specified as an array too in which case the $body[0] should be the template name to use as mail template and $body[1] should be optionally the template parameters.
