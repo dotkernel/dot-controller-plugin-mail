@@ -9,7 +9,6 @@
 
 namespace Dot\Controller\Plugin\Mail;
 
-
 use Dot\Controller\Plugin\Mail\Factory\MailPluginAbstractFactory;
 
 /**

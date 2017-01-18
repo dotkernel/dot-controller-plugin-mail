@@ -108,11 +108,10 @@ class MailPlugin implements PluginInterface
     {
         if (isset($args['body'])) {
             $body = $args['body'];
-            if(is_array($body)) {
+            if (is_array($body)) {
                 //consider this as a template name and its params
                 $this->mailService->setTemplate($body[0], $body[1]);
-            }
-            else {
+            } else {
                 $this->mailService->setBody($body);
             }
         }
@@ -150,6 +149,14 @@ class MailPlugin implements PluginInterface
     }
 
     /**
+     * @return MailServiceInterface
+     */
+    public function getMailService()
+    {
+        return $this->mailService;
+    }
+
+    /**
      * @param MailServiceInterface $mailService
      * @return $this
      */
@@ -157,13 +164,5 @@ class MailPlugin implements PluginInterface
     {
         $this->mailService = $mailService;
         return $this;
-    }
-
-    /**
-     * @return MailServiceInterface
-     */
-    public function getMailService()
-    {
-        return $this->mailService;
     }
 }
