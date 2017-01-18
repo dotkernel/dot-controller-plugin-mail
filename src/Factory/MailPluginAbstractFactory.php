@@ -55,12 +55,9 @@ class MailPluginAbstractFactory extends AbstractMailFactory
 
         //discard the sendMail part
         $parts = array_slice($parts, 2);
-        $specificServiceName = '';
-        foreach ($parts as $part) {
-            $specificServiceName .= $part;
-        }
+        $specificServiceName = implode('_', $parts);
 
-        //convert from camecase to underscores and set to lower
+        //convert from camelcase to underscores and set to lower
         return strtolower($specificServiceName);
     }
 
