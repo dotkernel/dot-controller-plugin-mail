@@ -9,7 +9,6 @@
 
 namespace Dot\Controller\Plugin\Mail\Factory;
 
-
 use Dot\Controller\Plugin\Mail\MailPlugin;
 use Dot\Mail\Factory\AbstractMailFactory;
 use Dot\Mail\Factory\MailServiceAbstractFactory;
@@ -43,24 +42,6 @@ class MailPluginAbstractFactory extends AbstractMailFactory
     }
 
     /**
-     * @param ContainerInterface $container
-     * @param string $requestedName
-     * @param array|null $options
-     * @return MailPlugin
-     */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
-    {
-        $specificServiceName = $this->getSpecificServiceName($requestedName);
-
-        /** @var MailServiceInterface $mailService */
-        $mailService = $container->get(sprintf(
-            '%s.%s.%s', self::DOT_MAIL_PART, MailServiceAbstractFactory::SPECIFIC_PART, $specificServiceName
-        ));
-
-        return new MailPlugin($mailService);
-    }
-
-    /**
      * @param $requestedName
      * @return string
      */
@@ -74,12 +55,9 @@ class MailPluginAbstractFactory extends AbstractMailFactory
 
         //discard the sendMail part
         $parts = array_slice($parts, 2);
-        $specificServiceName = '';
-        foreach ($parts as $part) {
-            $specificServiceName .= $part;
-        }
+        $specificServiceName = implode('_', $parts);
 
-        //convert from camecase to underscores and set to lower
+        //convert from camelcase to underscores and set to lower
         return strtolower($specificServiceName);
     }
 
@@ -102,5 +80,28 @@ class MailPluginAbstractFactory extends AbstractMailFactory
         }
 
         return preg_replace($pattern, $replacement, $value);
+    }
+
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return MailPlugin
+     */
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    {
+        $specificServiceName = $this->getSpecificServiceName($requestedName);
+
+        /** @var MailServiceInterface $mailService */
+        $mailService = $container->get(
+            sprintf(
+                '%s.%s.%s',
+                self::DOT_MAIL_PART,
+                MailServiceAbstractFactory::SPECIFIC_PART,
+                $specificServiceName
+            )
+        );
+
+        return new MailPlugin($mailService);
     }
 }
