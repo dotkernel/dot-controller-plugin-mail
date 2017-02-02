@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types = 1);
+
 namespace Dot\Controller\Plugin\Mail;
 
 use Dot\Controller\Plugin\PluginInterface;
@@ -83,7 +85,7 @@ class MailPlugin implements PluginInterface
      * @param array $args
      * @return array
      */
-    protected function normalizeMailArgs(array $args)
+    protected function normalizeMailArgs(array $args): array
     {
         // If the first argument is an array, use it as the mail configuration
         if (is_array($args[0])) {
@@ -109,8 +111,16 @@ class MailPlugin implements PluginInterface
         if (isset($args['body'])) {
             $body = $args['body'];
             if (is_array($body)) {
-                //consider this as a template name and its params
-                $this->mailService->setTemplate($body[0], $body[1]);
+                $charset = $body['charset'] ?? MailServiceInterface::DEFAULT_CHARSET;
+                if (isset($body['content']) && is_string($body['content'])) {
+                    $this->mailService->setBody($body['content'], $charset);
+                } elseif (isset($body['template']) && is_array($body['template'])) {
+                    $name = $body['template']['name'] ?? '';
+                    $params = $body['template']['params'] ?? [];
+                    if (!empty($name)) {
+                        $this->mailService->setTemplate($name, $params, $charset);
+                    }
+                }
             } else {
                 $this->mailService->setBody($body);
             }
@@ -151,18 +161,16 @@ class MailPlugin implements PluginInterface
     /**
      * @return MailServiceInterface
      */
-    public function getMailService()
+    public function getMailService(): MailServiceInterface
     {
         return $this->mailService;
     }
 
     /**
      * @param MailServiceInterface $mailService
-     * @return $this
      */
     public function setMailService(MailServiceInterface $mailService)
     {
         $this->mailService = $mailService;
-        return $this;
     }
 }
