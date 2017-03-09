@@ -7,6 +7,8 @@
  * Time: 7:49 PM
  */
 
+declare(strict_types = 1);
+
 namespace Dot\Controller\Plugin\Mail\Factory;
 
 use Dot\Controller\Plugin\Mail\MailPlugin;
@@ -27,7 +29,7 @@ class MailPluginAbstractFactory extends AbstractMailFactory
      * @param string $requestedName
      * @return bool
      */
-    public function canCreate(ContainerInterface $container, $requestedName)
+    public function canCreate(ContainerInterface $container, $requestedName): bool
     {
         if (strpos($requestedName, 'sendMail') !== 0) {
             return false;
@@ -45,7 +47,7 @@ class MailPluginAbstractFactory extends AbstractMailFactory
      * @param $requestedName
      * @return string
      */
-    protected function getSpecificServiceName($requestedName)
+    protected function getSpecificServiceName(string $requestedName): string
     {
         $parts = explode('_', $this->camelCaseToUnderscore($requestedName));
 
@@ -65,7 +67,7 @@ class MailPluginAbstractFactory extends AbstractMailFactory
      * @param $value
      * @return mixed
      */
-    protected function camelCaseToUnderscore($value)
+    protected function camelCaseToUnderscore(string $value): string
     {
         if (!is_scalar($value) && !is_array($value)) {
             return $value;
@@ -88,7 +90,7 @@ class MailPluginAbstractFactory extends AbstractMailFactory
      * @param array|null $options
      * @return MailPlugin
      */
-    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null): MailPlugin
     {
         $specificServiceName = $this->getSpecificServiceName($requestedName);
 
