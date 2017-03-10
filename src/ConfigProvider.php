@@ -5,6 +5,8 @@
  * @license https://github.com/dotkernel/dot-controller-plugin-mail/blob/master/LICENSE.md MIT License
  */
 
+declare(strict_types = 1);
+
 namespace Dot\Controller\Plugin\Mail;
 
 use Dot\Controller\Plugin\Mail\Factory\MailPluginAbstractFactory;
@@ -18,11 +20,10 @@ class ConfigProvider
     /**
      * @return array
      */
-    public function __invoke()
+    public function __invoke(): array
     {
         return [
             'dot_controller' => [
-
                 'plugin_manager' => [
                     'abstract_factories' => [
                         MailPluginAbstractFactory::class,
