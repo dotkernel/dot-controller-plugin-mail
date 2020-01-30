@@ -14,7 +14,7 @@ use Dot\Mail\Factory\AbstractMailFactory;
 use Dot\Mail\Factory\MailServiceAbstractFactory;
 use Dot\Mail\Service\MailServiceInterface;
 use Interop\Container\ContainerInterface;
-use Zend\Stdlib\StringUtils;
+use Laminas\Stdlib\StringUtils;
 
 /**
  * Class MailPluginAbstractFactory

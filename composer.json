@@ -1,39 +1,39 @@
 {
-  "name": "dotkernel/dot-controller-plugin-mail",
-  "type": "library",
-  "description": "DotKernel mail controller plugin component",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "DotKernel Team",
-      "email": "team@dotkernel.com"
+    "name": "dotkernel/dot-controller-plugin-mail",
+    "type": "library",
+    "description": "DotKernel mail controller plugin component",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "DotKernel Team",
+            "email": "team@dotkernel.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laminas/laminas-servicemanager": "^3.3",
+        "dotkernel/dot-controller": "^2.0",
+        "dotkernel/dot-mail": "^2.0",
+        "laminas/laminas-dependency-plugin": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dot\\Controller\\Plugin\\Mail\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DotTest\\Controller\\Plugin\\Mail\\": "test/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev",
+            "dev-develop": "2.1-dev"
+        }
     }
-  ],
-  "require": {
-    "php": "^7.1",
-    "zendframework/zend-servicemanager": "^3.3",
-
-    "dotkernel/dot-controller": "^1.0",
-    "dotkernel/dot-mail": "^1.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^4.8",
-    "squizlabs/php_codesniffer": "^2.3"
-  },
-  "autoload": {
-    "psr-4": {
-      "Dot\\Controller\\Plugin\\Mail\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "DotTest\\Controller\\Plugin\\Mail\\": "test/"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev",
-      "dev-develop": "1.1-dev"
-    }
-  }
 }
