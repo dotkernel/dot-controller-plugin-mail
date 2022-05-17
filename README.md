@@ -2,6 +2,13 @@
 
 Mail controller plugin for easy access to dot-mail service from any controller.
 
+![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-controller-plugin-mail)
+[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-controller-plugin-mail)](https://github.com/dotkernel/dot-controller-plugin-mail/blob/2.0.1/LICENSE.md)
+
+# NOTE
+
+> **dot-controller-plugin-mail** is **archived** and will receive no further development!
+
 ## Installation
 
 Run the  following command in your project's root directory
