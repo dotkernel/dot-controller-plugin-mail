@@ -1,13 +1,18 @@
-# dot-controller-plugin-mail
 
-Mail controller plugin for easy access to dot-mail service from any controller.
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-controller-plugin-mail)
 [![GitHub license](https://img.shields.io/github/license/dotkernel/dot-controller-plugin-mail)](https://github.com/dotkernel/dot-controller-plugin-mail/blob/2.0.1/LICENSE.md)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-controller-plugin-mail/2.9.1)
 
-# NOTE
+## Note
 
-> **dot-controller-plugin-mail** is **archived** and will receive no further development!
+> **dot-controller-plugin-mail**  is in **maintenance** mode.
+
+> This package is considered feature-complete, and is now in **security-only** maintenance mode.
+
+# dot-controller-plugin-mail
+
+Mail controller plugin for easy access to dot-mail service from any controller.
 
 ## Installation
 
